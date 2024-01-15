@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 
 from dfs import dfs_recursive
 from bfs import bfs
+from dijkstra import dijkstra
 
 # Part 1
 
@@ -83,15 +84,11 @@ print(f'BFS path: {bfs_paths}')
 # Part 3
 print('\nPart 3\n')
 
-shortest_paths = dict(nx.all_pairs_dijkstra_path(G, weight='weight'))
+target_node = 'Lviv'
 
-source = 'Vinnytsia'
-target = 'Lviv'
+shortest_path, shortest_distance = dijkstra(G, 'Vinnytsia', target_node)
 
-shortest_path = shortest_paths[source][target]
-shortest_distance = nx.shortest_path_length(G, source=source, target=target, weight='weight')
-
-print(f"Shortest path from {source} to {target}: {shortest_path}")
+print(f"Shortest path from Vinnytsia to {target_node}: {shortest_path}")
 print(f"Shortest distance: {shortest_distance} km")
 
 # Part 3 - end
